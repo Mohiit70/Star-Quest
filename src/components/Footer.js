@@ -1,36 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-
-const FooterContainer = styled.footer`
-  padding: 1rem;
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  margin-top: 2rem;
-`;
-
-const FooterLink = styled.a`
-  color: #00ffff;
-  text-decoration: none;
-  margin: 0 0.5rem;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #cc00cc;
+export default function Footer() {
+    return (
+      <footer className="bg-gray-800 text-white p-4 mt-8">
+        <div className="container mx-auto text-center">
+          <p>&copy; 2023 Star Quest. All rights reserved.</p>
+        </div>
+      </footer>
+    );
   }
-`;
-
-const Footer = () => {
-  return (
-    <FooterContainer>
-      <p>&copy; 2023 Sci-Fi Text Adventure. All rights reserved.</p>
-      <p>
-        <FooterLink href="#about">About</FooterLink>
-        <FooterLink href="#contact">Contact</FooterLink>
-        <FooterLink href="#privacy">Privacy Policy</FooterLink>
-      </p>
-    </FooterContainer>
-  );
-};
-
-export default Footer;

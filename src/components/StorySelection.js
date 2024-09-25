@@ -1,64 +1,25 @@
-import React from 'react';
-import styled from 'styled-components';
-import { stories } from '../data/stories';
-
-const StoryGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-`;
-
-const StoryCard = styled.div`
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 10px;
-  padding: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+const stories = [
+    { id: 1, title: "The Lost Temple of Time", emoji: "🕌" },
+    { id: 2, title: "Galactic Odyssey", emoji: "🚀" },
+    { id: 3, title: "Echoes of Ancient Starfarers", emoji: "🏛️" },
+  ];
+  
+  export default function StorySelection({ onSelect }) {
+    return (
+      <div className="text-center">
+        <h2 className="text-4xl font-bold mb-8 text-yellow-500">Choose Your Adventure</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {stories.map((story) => (
+            <button
+              key={story.id}
+              onClick={() => onSelect(story)}
+              className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-6 px-4 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+            >
+              <span className="text-6xl mb-4 block">{story.emoji}</span>
+              <p className="text-xl">{story.title}</p>
+            </button>
+          ))}
+        </div>
+      </div>
+    );
   }
-`;
-
-const StoryImage = styled.img`
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-`;
-
-const StoryTitle = styled.h3`
-  font-family: 'Orbitron', sans-serif;
-  color: #00ffff;
-  margin-bottom: 0.5rem;
-`;
-
-const StoryDescription = styled.p`
-  font-family: 'Roboto', sans-serif;
-  color: #fff;
-`;
-
-function StorySelection({ onSelect }) {
-  return (
-    <div>
-      <h2>Choose Your Story</h2>
-      <StoryGrid>
-        {stories.map((story) => (
-          <StoryCard key={story.title} onClick={() => onSelect(story)}>
-            <StoryImage src={story.image} alt={story.title} />
-            <StoryTitle>{story.title}</StoryTitle>
-            <StoryDescription>{story.description}</StoryDescription>
-          </StoryCard>
-        ))}
-      </StoryGrid>
-    </div>
-  );
-}
-
-export default StorySelection;
