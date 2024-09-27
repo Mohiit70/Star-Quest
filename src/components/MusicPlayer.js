@@ -7,7 +7,7 @@ export default function MusicPlayer() {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    audioRef.current = new Audio('/assets/music/background-music.mp3');
+    audioRef.current = new Audio('../assets/music/background-music.mp3');
     audioRef.current.loop = true;
   }, []);
 

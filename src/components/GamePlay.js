@@ -31,15 +31,15 @@ export default function GamePlay({ story, character }) {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Star Quest: {story.title}</h2>
-      <p className="mb-4">{currentScene}</p>
+    <div className="max-w-2xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-4 text-yellow-500">Star Quest: {story.title}</h2>
+      <p className="mb-6 text-lg">{currentScene}</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {choices.map((choice, index) => (
           <button
             key={index}
             onClick={() => handleChoice(choice)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            className="game-button"
           >
             {choice}
           </button>

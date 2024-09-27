@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react';
-import LoadingPage from '../components/LoadingPage';
-import StorySelection from '../components/StorySelection';
-import CharacterSelection from '../components/CharacterSelection';
-import GamePlay from '../components/GamePlay';
+import LoadingPage from '@/components/LoadingPage';
+import StorySelection from '@/components/StorySelection';
+import CharacterSelection from '@/components/CharacterSelection';
+import GamePlay from '@/components/GamePlay';
 
 export default function Game() {
   const [gameState, setGameState] = useState('loading');
@@ -23,7 +23,7 @@ export default function Game() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-700 text-white">
-      <div className="container mx-auto px-4 py-8">
+      <div className="game-container">
         {gameState === 'loading' && <LoadingPage onComplete={() => setGameState('story-select')} />}
         {gameState === 'story-select' && <StorySelection onSelect={handleStorySelect} />}
         {gameState === 'character-select' && <CharacterSelection onSelect={handleCharacterSelect} />}

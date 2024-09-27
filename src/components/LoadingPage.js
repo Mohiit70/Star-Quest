@@ -26,7 +26,7 @@ export default function LoadingPage({ onComplete }) {
         </ol>
       </div>
       <div className="md:w-1/2 p-4">
-        <Image src="/assets/images/game-thumbnail.jpg" alt="Star Quest" width={500} height={300} className="rounded-lg shadow-lg" />
+        <Image src="/assets/images/game-thumbnail.png" alt="Star Quest" width={500} height={300} className="rounded-lg shadow-lg" />
       </div>
     </div>
   );

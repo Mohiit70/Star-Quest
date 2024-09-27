@@ -7,8 +7,8 @@ export default function Home() {
       <Image
         src="/assets/images/majestic-interior-romanera-worship-temple-bathed-ethereal-light_924727-14012.jpg"
         alt="Temple interior"
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: 'cover' }}
         quality={100}
       />
       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center">
