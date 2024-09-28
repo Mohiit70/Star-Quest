@@ -5,41 +5,48 @@ export default function GamePlay({ story, character }) {
   const [currentScene, setCurrentScene] = useState('');
   const [choices, setChoices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchStory = async () => {
-      setLoading(true);
-      const initialScene = await generateStory(story, character);
-      setCurrentScene(initialScene.scene);
-      setChoices(initialScene.choices);
-      setLoading(false);
-    };
-
     fetchStory();
   }, [story, character]);
 
-  const handleChoice = async (choice) => {
+  const fetchStory = async (choice = null) => {
     setLoading(true);
-    const nextScene = await generateStory(story, character, choice);
-    setCurrentScene(nextScene.scene);
-    setChoices(nextScene.choices);
-    setLoading(false);
+    setError(null);
+    try {
+      const sceneData = await generateStory(story, character, choice);
+      setCurrentScene(sceneData.scene);
+      setChoices(sceneData.choices);
+    } catch (err) {
+      setError('Failed to generate story. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleChoice = (choice) => {
+    fetchStory(choice);
   };
 
   if (loading) {
-    return <div className="text-center">Loading...</div>;
+    return <div className="text-center text-lg text-black">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500 text-lg">{error}</div>;
   }
 
   return (
-    <div className="max-w-2xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-yellow-500">Star Quest: {story.title}</h2>
-      <p className="mb-6 text-lg">{currentScene}</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="max-w-2xl mx-auto bg-gray-100 p-8 rounded-lg shadow-md">
+      <h2 className="text-3xl font-bold mb-6 text-black">Star Quest: {story.title}</h2>
+      <p className="text-lg mb-8 text-black">{currentScene}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {choices.map((choice, index) => (
           <button
             key={index}
             onClick={() => handleChoice(choice)}
-            className="game-button"
+            className="bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-3 px-6 rounded-lg transition duration-200"
           >
             {choice}
           </button>
