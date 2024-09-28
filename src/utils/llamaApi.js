@@ -1,5 +1,5 @@
-const API_KEY = 'your_llama_api_key_here';
-const API_URL = 'https://api.llama.ai/v1/chat/completions';
+const API_KEY = 
+const API_URL = 
 
 export async function generateStory(story, character, choice = null) {
   const prompt = `
@@ -18,17 +18,30 @@ export async function generateStory(story, character, choice = null) {
       'Authorization': `Bearer ${API_KEY}`,
     },
     body: JSON.stringify({
-      model: 'text-davinci-002',
-      prompt: prompt,
-      max_tokens: 200,
+      model: 'mixtral-8x7b-32768',
+      messages: [
+        { role: 'system', content: 'You are a creative storyteller for an interactive sci-fi adventure game.' },
+        { role: 'user', content: prompt }
+      ],
+      max_tokens: 500,
+      temperature: 0.7,
     }),
   });
 
-  const data = await response.json();
-  const generatedText = data.choices[0].text.trim();
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
 
-  const [scene, ...choicesText] = generatedText.split('\n\nChoices:');
-  const choices = choicesText[0].split('\n').map(choice => choice.trim().replace(/^\d+\.\s*/, ''));
+  const data = await response.json();
+  const generatedText = data.choices[0].message.content.trim();
+
+  // Split the generated text into scene and choices
+  const parts = generatedText.split('\n\nChoices:');
+  const scene = parts[0].trim();
+  const choicesText = parts.length > 1 ? parts[1] : '';
+  const choices = choicesText.split('\n')
+    .map(choice => choice.trim().replace(/^\d+\.\s*/, ''))
+    .filter(choice => choice.length > 0);
 
   return { scene, choices };
 }

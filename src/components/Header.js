@@ -14,7 +14,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="/game" className="text-white hover:text-yellow-500 transition-colors">
+            <Link href="/play" className="text-white hover:text-yellow-500 transition-colors">
               Play
             </Link>
           </li>

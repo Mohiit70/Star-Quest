@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       <Image
-        src="/assets/images/majestic-interior-romanera-worship-temple-bathed-ethereal-light_924727-14012.jpg"
+        src="/images/temple-interior.jpg"
         alt="Temple interior"
         fill
         style={{ objectFit: 'cover' }}
@@ -16,7 +16,7 @@ export default function Home() {
         <p className="text-xl text-white mb-8 text-center max-w-2xl">
           Embark on an epic journey through ancient temples and futuristic worlds. Your choices will shape the destiny of the universe.
         </p>
-        <Link href="/game" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-full text-xl transition duration-300 ease-in-out transform hover:scale-105">
+        <Link href="/play" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-full text-xl transition duration-300 ease-in-out transform hover:scale-105">
           Begin Your Adventure
         </Link>
       </div>
