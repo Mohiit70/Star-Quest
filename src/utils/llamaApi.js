@@ -1,4 +1,4 @@
-const API_KEY = 'enter your api';
+const API_KEY = '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';
 const API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 export async function generateStory(story, character, choice = null) {

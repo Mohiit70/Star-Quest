@@ -3,35 +3,35 @@
 @import 'tailwindcss/utilities';
 
 :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 10, 18;
+  --background-end-rgb: 23, 23, 37;
+  --accent-color: 44, 82, 130;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+}
+
+@layer components {
+  .game-container {
+    @apply max-w-6xl mx-auto px-4 py-8;
   }
-  
-  body {
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgb(var(--background-end-rgb))
-      )
-      rgb(var(--background-start-rgb));
+
+  .game-title {
+    @apply text-5xl font-bold mb-12 text-center text-blue-300 tracking-wide;
   }
-  
-  @layer components {
-    .game-container {
-      @apply max-w-4xl mx-auto px-4 py-8;
-    }
-  
-    .game-title {
-      @apply text-4xl font-bold mb-8 text-center text-yellow-500;
-    }
-  
-    .game-button {
-      @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105;
-    }
-  
-    .game-input {
-      @apply bg-gray-800 text-white border border-gray-700 rounded-lg p-2 w-full mb-4;
-    }
+
+  .game-button {
+    @apply bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-lg;
   }
+
+  .game-input {
+    @apply bg-gray-900 text-white border border-gray-800 rounded-lg p-4 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg;
+  }
+}
