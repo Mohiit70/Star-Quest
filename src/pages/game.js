@@ -1,34 +1,60 @@
-'use client'
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { generateStory } from '@/utils/llamaApi'
 
-import { useState } from 'react';
-import LoadingPage from '@/components/LoadingPage';
-import StorySelection from '@/components/StorySelection';
-import CharacterSelection from '@/components/CharacterSelection';
-import GamePlay from '@/components/GamePlay';
+export default function GamePlay({ story, character }) {
+  const [currentScene, setCurrentScene] = useState('')
+  const [choices, setChoices] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
-export default function Game() {
-  const [gameState, setGameState] = useState('loading');
-  const [selectedStory, setSelectedStory] = useState(null);
-  const [selectedCharacter, setSelectedCharacter] = useState(null);
+  useEffect(() => {
+    fetchStory()
+  }, [story, character])
 
-  const handleStorySelect = (story) => {
-    setSelectedStory(story);
-    setGameState('character-select');
-  };
+  const fetchStory = async (choice = null) => {
+    setLoading(true)
+    setError(null)
+    try {
+      const sceneData = await generateStory(story, character, choice)
+      setCurrentScene(sceneData.scene)
+      setChoices(sceneData.choices)
+    } catch (err) {
+      setError('Failed to generate story. Please try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
 
-  const handleCharacterSelect = (character) => {
-    setSelectedCharacter(character);
-    setGameState('play');
-  };
+  const handleChoice = (choice) => {
+    fetchStory(choice)
+  }
+
+  if (loading) {
+    return <div className="text-center text-lg">Loading...</div>
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500 text-lg">{error}</div>
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-700 text-white">
-      <div className="game-container">
-        {gameState === 'loading' && <LoadingPage onComplete={() => setGameState('story-select')} />}
-        {gameState === 'story-select' && <StorySelection onSelect={handleStorySelect} />}
-        {gameState === 'character-select' && <CharacterSelection onSelect={handleCharacterSelect} />}
-        {gameState === 'play' && <GamePlay story={selectedStory} character={selectedCharacter} />}
+    <div className="max-w-2xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
+      <h2 className="text-3xl font-bold mb-6 text-purple-300">Star Quest: {story.title}</h2>
+      <p className="text-lg mb-8 text-gray-300">{currentScene}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {choices.map((choice, index) => (
+          <motion.button
+            key={index}
+            onClick={() => handleChoice(choice)}
+            className="game-button"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {choice}
+          </motion.button>
+        ))}
       </div>
     </div>
-  );
+  )
 }

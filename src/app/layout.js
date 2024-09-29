@@ -1,10 +1,10 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import MusicPlayer from '../components/MusicPlayer'
+import { Space_Grotesk } from 'next/font/google'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import MusicPlayer from '@/components/MusicPlayer'
 
-const inter = Inter({ subsets: ['latin'] })
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Star Quest',
@@ -14,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={spaceGrotesk.className}>
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-900 to-gray-700 text-white">
           <Header />
           <main className="flex-grow container mx-auto px-4 py-8">
