@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
 
-## Getting Started
+<img src="./public/Logo.png" width="300" height="300">
 
-First, run the development server:
+# 🌌 Star Quest: A Sci-Fi Text Adventure Game 🌌
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+</div>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Welcome to **Star Quest**, a thrilling, AI-powered sci-fi text adventure game I created for the **School of Open Source Challenge**. This game blends ancient myths with futuristic space adventures, and thanks to AI, the story evolves based on the decisions *you* make. Dive in for an immersive journey where every choice shapes your destiny!
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🎥 Demo Video
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Check out the demo of **Star Quest** on YouTube:  
+[Watch the demo video here!](https://youtu.be/nRTH8Hzixas?si=tRtUJP7ebp3XQfjq)
 
-## Learn More
+## 🚀 What's Special About Star Quest?
 
-To learn more about Next.js, take a look at the following resources:
+- **Dynamic Storylines**: The story changes as you play, powered by LLaMA AI.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Create Your Own Character**: Customize your hero for an engaging and personal experience.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Multiple Adventures**: Explore different storylines each time you play.
 
-## Deploy on Vercel
+- **Sci-Fi Theme & Soundtrack**: Enjoy an epic soundtrack while venturing through space.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Polished UI**: Sleek and responsive design for an immersive experience, built with Tailwind CSS.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## ✨ Features
+
+- **LLaMA AI**: Generates real-time, adaptive storylines based on your choices.
+
+- **Next.js**: A powerful React framework for smooth gameplay and routing.
+
+- **React Hooks**: For managing game state and user interactions seamlessly.
+
+- **Tailwind CSS**: A utility-first CSS framework for quick design and responsive layout.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js, React.js, React Hooks
+
+- **AI Model**: LLaMA API
+
+- **UI/UX**: Tailwind CSS for design and responsiveness
+
+## 📸 Screenshots
+
+<div align="center">
+  <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+    <img src="public/Screenshot 2024-09-27 191144.png" alt="Screenshot 1" width="300" style="margin: 10px;" />
+    <img src="public/Screenshot 2024-09-29 184842.png" alt="Screenshot 2" width="300" style="margin: 10px;" />
+    <img src="public/Screenshot 2024-09-29 184901.png" alt="Screenshot 3" width="300" style="margin: 10px;" />
+    <img src="public/Screenshot 2024-09-29 184920.png" alt="Screenshot 4" width="300" style="margin: 10px;" />
+    <img src="public/Screenshot 2024-09-29 185105.png" alt="Screenshot 5" width="300" style="margin: 10px;" />
+  </div>
+</div>
+
+## 🎮 How to Play
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/YourUsername/StarQuest.git
+
+2. Install dependencies:
+   ```bash
+   npm install
+
+3. Start the game:
+   ```bash
+   npm run dev
+
+## 💬 Feedback & Contribution
+
+I'd love to hear your feedback on Star Quest! Feel free to open issues or contribute by submitting pull requests.
